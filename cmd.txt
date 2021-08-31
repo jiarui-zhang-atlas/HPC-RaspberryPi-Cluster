@@ -1,0 +1,20 @@
+scp -r /home/pi/Simulation_MPI pi@192.168.0.103:/home/pi
+scp -r /home/pi/Simulation_MPI pi@192.168.0.106:/home/pi
+scp -r /home/pi/Simulation_MPI pi@192.168.0.109:/home/pi
+scp -r /home/pi/Simulation_MPI pi@192.168.0.111:/home/pi
+scp -r /home/pi/Simulation_MPI pi@192.168.0.118:/home/pi
+scp -r /home/pi/Simulation_MPI pi@192.168.0.108:/home/pi
+scp -r /home/pi/Simulation_MPI pi@192.168.0.105:/home/pi
+
+scp -r /home/pi/error_distribution pi@192.168.0.103:/home/pi
+scp -r /home/pi/error_distribution pi@192.168.0.106:/home/pi
+scp -r /home/pi/error_distribution pi@192.168.0.109:/home/pi
+scp -r /home/pi/error_distribution pi@192.168.0.111:/home/pi
+scp -r /home/pi/error_distribution pi@192.168.0.118:/home/pi
+scp -r /home/pi/error_distribution pi@192.168.0.108:/home/pi
+scp -r /home/pi/error_distribution pi@192.168.0.105:/home/pi
+
+
+
+mpirun --mca btl_tcp_if_include eth0 -np 32 -machinefile /home/pi/machinefile python3 /home/pi/Simulation_MPI/Cluster_MPI.py
+
