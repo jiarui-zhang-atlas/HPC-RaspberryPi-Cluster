@@ -43,8 +43,23 @@ NetworkX is a Python package for the creation, manupulation, and study of the st
 * 8 USB-C power cables.
    <div align=center><img src="https://github.com/Atlaszjr-star/HPC-RaspberryPi-Cluster/blob/main/figures/before.jpg" width="400px" /></div>
 
-## Technologies and Environment
+## Environment
+* Operating System image: Raspberry Pi OS with desktop, 32 bit, kernel version: 5.10
+* Python: 3.7
+* MPICH: 3.4.2
+* mpipy: 2.0.0
+* osmnx: 1.1.1
+* networkx>=2.5
+* numpy>=1.19
+* pandas>=1.1
+* geopandas>=0.9
+* pyproj>=2.6
+* matplotlib>=3.3
+* Rtree>=0.9
+* Shapely>=1.7
+
 ## Setup master node
+1. 
 ## Setup the whole cluster
 ## Introduction of Dataset
 ## Algorithm of Mobility Simulation
