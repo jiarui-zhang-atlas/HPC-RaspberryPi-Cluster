@@ -151,7 +151,30 @@ $ sudo /etc/init.d/networking restart
 8. Prepare at least 64GB space in your computer (or mobile hard disk). Convert the created OS to an image file, the size of the image file will be approximately 64GB, which depends the size of microSD card you used in the master node.
 
 ## Setup the whole cluster
-1. 
+1. Flash the converted image to the 7 microSD cards for the other 7 worker nodes, now the other 7 nodes also get the same RPi OS with all packages and dependencies as master node.
+2. Log in each node individually, in your local network, change the certain static eth0 IP address for each node. Static IP can be changed in the file. In case of IP address conflicts in your local network, please check all the IP address used by the other devices before you change the IP address as static ip, 
+```shell
+sudo nano /etc/dhcpcd.conf
+```
+3. Create a file named "machinefile" in master node, record the static IP address of all nodes.
+```
+192.168.x.xxx
+192.168.x.xxx
+192.168.x.xxx
+192.168.x.xxx
+192.168.x.xxx
+192.168.x.xxx
+192.168.x.xxx
+192.168.x.xxx
+```
+4. Now you can login any other nodes from one node via SSH after SSH authentications, even without password if you configure the master's SSH keys to other nodes. You can also change the username of each node (I change it to "pi"). You can login the other node from master node like this:
+```shell
+# 192.168.x.xxx, the ip address of the node you want to login.
+$ ssh pi@192.168.x.xxx
+```
+5. 
+
+
 ## Introduction of Dataset
 ## Algorithm of Mobility Simulation
 ## Results
