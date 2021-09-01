@@ -124,6 +124,29 @@ $ mpirun -np 4 python3 test.py
 # Hello, World! I am process 2 of 4 on raspberrypi.
 # Hello, World! I am process 3 of 4 on raspberrypi.
 ```
+5. Enable SSH for master node
+```shell
+# Enable SSH in configuration page 
+$ sudo raspi-config
+# Find the IP address, in this project, we use Ethernet cable instead of wireless connection, so the ip-address is like: eth0
+$ ifconfig 
+# install xrdp for remote access from other PC in the same local network
+$ sudo apt-get install xrdp
+# Setting DNS
+$ sudo apt-get update
+$ sudo nano /etc/dhcpcd.conf
+# modify static domain_name_servers = 8.8.8.8
+$ sudo nano /etc/resolv.conf
+# add two lines
+   # nameserver 8.8.8.8
+   # nameserver 8.8.4.4
+# restart the networking service
+$ sudo server dhcpcd restart
+$ sudo systemctl daemon-reload
+$ sudo /etc/init.d/networking restart
+```
+6. 
+
 ## Setup the whole cluster
 ## Introduction of Dataset
 ## Algorithm of Mobility Simulation
