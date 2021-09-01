@@ -4,7 +4,7 @@ A RaspberryPi supercomputer for HPC Simulation
 * [Introduction](#introduction)
 * [Background info](#background-info)
 * [Hardware Components](#hardware-components)
-* [Technologies and Environment](#technologies-and-environment)
+* [Setup Environment](#setup-environment)
 * [Setup master node](#setup-master-node)
 * [Setup the whole cluster](#setup-the-whole-cluster)
 * [Introduction of Dataset](#introduction-of-dataset)
@@ -41,9 +41,20 @@ NetworkX is a Python package for the creation, manupulation, and study of the st
 * 1 Powerstation with 10 ports.
 * 8 Gigabit Ethernet cables.
 * 8 USB-C power cables.
-   <div align=center><img src="https://github.com/Atlaszjr-star/HPC-RaspberryPi-Cluster/blob/main/figures/before.jpg" width="400px" /></div>
+   <br>
+   <div align="center">
+   <img src="https://github.com/Atlaszjr-star/HPC-RaspberryPi-Cluster/blob/main/figures/before.jpg" width="380px" height="250px" />
+   <img src="https://github.com/Atlaszjr-star/HPC-RaspberryPi-Cluster/blob/main/figures/all_Devices.jpg" width="380px" height="250px" />
+   </div>
+   <div align="center">
+   </div> 
+      <br>
+   <div align="center">
+   <img src="https://github.com/Atlaszjr-star/HPC-RaspberryPi-Cluster/blob/main/figures/details-night.jpg" width="380px"/>
+   <img src="https://github.com/Atlaszjr-star/HPC-RaspberryPi-Cluster/blob/main/figures/masternode.jpg" width="380px" />
+   </div>
 
-## Environment
+## Setup Environment
 * Operating System image: Raspberry Pi OS with desktop, 32 bit, kernel version: 5.10
 * Python: 3.7
 * MPICH: 3.4.2
@@ -69,7 +80,7 @@ $ mkdir mpich3
 $ cd mpich3
 $ wget http://www.mpich.org/static/downloads/3.4.2/mpich-3.4.2.tar.gz
 $ tar xfz mpich-3.4.2.tar.gz
-$ mkdir buuild install
+$ mkdir build install
 $ cd build
 # --disable-fortran since we don't use fortran for programming
 $ /home/pi/mpich3/mpich-3.4.2/configure --disable-fortran --with-device=ch4:ofi -prefix=/home/pi/mpich3/install
@@ -82,6 +93,36 @@ $ sudo nano /home/pi/.profile
 $ export = PATH="$PATH:/home/pi/mpich3/install/bin"
 # test installation
 $ mpiexec -n 1 hostname
+```
+4. Install mpi4py: 2.0.0, mpi4py is a wrapper of MPICH
+```shell
+$ sudo apt install python-pip python-dev libopenmpi-dev
+$ sudo apt install python3-mpi4py
+$ pip3 list
+$ mpipy 2.0.0
+# test
+$ mkdir mpi4py
+$ cd mpi4py
+$ sudo nano test.py
+# copy following code and paste to test.py
+# ------------------ Python --------------- #
+from mpi4py import MPI
+import sys
+
+size = MPI.COMM_WORLD.Get_size()
+rank = MPI.COMM_WORLD.Get_rank()
+name = MPI.Get_processor_name()
+
+sys.stdout.write(
+     "Hello, World! I am process %d of %d on %s.\n"
+     % (rank, size, name))
+-----------------------------------------------
+$ mpirun -np 4 python3 test.py
+# output: 
+# Hello, World! I am process 0 of 4 on raspberrypi.
+# Hello, World! I am process 1 of 4 on raspberrypi.
+# Hello, World! I am process 2 of 4 on raspberrypi.
+# Hello, World! I am process 3 of 4 on raspberrypi.
 ```
 ## Setup the whole cluster
 ## Introduction of Dataset
