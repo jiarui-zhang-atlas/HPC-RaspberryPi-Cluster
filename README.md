@@ -59,15 +59,16 @@ NetworkX is a Python package for the creation, manupulation, and study of the st
 * Python: 3.7
 * MPICH: 3.4.2
 * mpipy: 2.0.0
-* osmnx: 1.1.1
-* networkx>=2.5
-* numpy>=1.19
-* pandas>=1.1
-* geopandas>=0.9
-* pyproj>=2.6
-* matplotlib>=3.3
-* Rtree>=0.9
-* Shapely>=1.7
+* osmnx: 1.1.1 and its dependencies: 
+   * networkx>=2.5
+   * numpy>=1.19
+   * pandas>=1.1
+   * geopandas>=0.9
+   * pyproj>=2.6
+   * matplotlib>=3.3
+   * requests>=2.25
+   * Rtree>=0.9
+   * Shapely>=1.7
 
 ## Setup master node
 1. Flash the 64GB microSD card with Raspberry Pi OS, 32 bit, then master node gets a clean RPi Linux OS
@@ -128,7 +129,7 @@ $ mpirun -np 4 python3 test.py
 ```shell
 # Enable SSH in configuration page 
 $ sudo raspi-config
-# Find the IP address, in this project, we use Ethernet cable instead of wireless connection, so the ip-address is like: eth0
+# Find the IP address, in this project, we use Ethernet port (eth0) instead of wireless connection
 $ ifconfig 
 # install xrdp for remote access from other PC in the same local network
 $ sudo apt-get install xrdp
@@ -145,9 +146,12 @@ $ sudo server dhcpcd restart
 $ sudo systemctl daemon-reload
 $ sudo /etc/init.d/networking restart
 ```
-6. 
+6. Install OSMnx via pip instead of conda, Raspberry Pi has no the stable version of conda. Make sure you have already installed all dependencies.
+7. Now you create a RPi OS with all packages and dependencies we need.
+8. Prepare at least 64GB space in your computer (or mobile hard disk). Convert the created OS to an image file, the size of the image file will be approximately 64GB, which depends the size of microSD card you used in the master node.
 
 ## Setup the whole cluster
+1. 
 ## Introduction of Dataset
 ## Algorithm of Mobility Simulation
 ## Results
