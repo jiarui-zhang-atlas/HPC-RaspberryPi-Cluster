@@ -158,22 +158,69 @@ sudo nano /etc/dhcpcd.conf
 ```
 3. Create a file named "machinefile" in master node, record the static IP address of all nodes.
 ```
-192.168.x.xxx
-192.168.x.xxx
-192.168.x.xxx
-192.168.x.xxx
-192.168.x.xxx
-192.168.x.xxx
-192.168.x.xxx
-192.168.x.xxx
+192.168.x.xxx        (node 0, master node)
+192.168.x.xxx        (node 1, worker node)
+192.168.x.xxx        (node 2, worker node)
+192.168.x.xxx        (node 3, worker node)
+192.168.x.xxx        (node 4, worker node)
+192.168.x.xxx        (node 5, worker node)
+192.168.x.xxx        (node 6, worker node)
+192.168.x.xxx        (node 7, worker node)
 ```
 4. Now you can login any other nodes from one node via SSH after SSH authentications, even without password if you configure the master's SSH keys to other nodes. You can also change the username of each node (I change it to "pi"). You can login the other node from master node like this:
 ```shell
 # 192.168.x.xxx, the ip address of the node you want to login.
 $ ssh pi@192.168.x.xxx
 ```
-5. 
+5. Now, create your working space (my folder is called Simulation_MPI) at master node, then you can develop your MPI application in this working space. Each worker node need the same working space at the same path from master node, so you can distribute your master node's working space with all the files to each worker node at the same path:
+```shell
+scp -r /home/pi/Simulation_MPI pi@192.168.x.xxx:/home/pi
+scp -r /home/pi/Simulation_MPI pi@192.168.x.xxx:/home/pi
+scp -r /home/pi/Simulation_MPI pi@192.168.x.xxx:/home/pi
+scp -r /home/pi/Simulation_MPI pi@192.168.x.xxx:/home/pi
+scp -r /home/pi/Simulation_MPI pi@192.168.x.xxx:/home/pi
+scp -r /home/pi/Simulation_MPI pi@192.168.x.xxx:/home/pi
+scp -r /home/pi/Simulation_MPI pi@192.168.x.xxx:/home/pi
+```
+6. "Hello world" in the cluster with 8 nodes, 32 processes.
 
+```shell
+Run the following script in the cluster:
+--------------------- Python ----------------------
+from mpi4py import MPI
+import sys
+
+size = MPI.COMM_WORLD.Get_size()
+rank = MPI.COMM_WORLD.Get_rank()
+name = MPI.Get_processor_name()
+
+sys.stdout.write(
+     "Hello, World! I am process %d of %d on the node %s.\n"
+     % (rank, size, name))
+
+----------------------------------------------------
+# btl_tcp_if_include: configure with TCP connection
+# eth0: ethernet ip address
+# -np 32: define the number of processes used
+# machinefile: ip address of nodes
+$ mpirun --mca btl_tcp_if_include eth0 -np 32 -machinefile /home/pi/machinefile python3 /home/pi/Simulation_MPI/test.py
+
+# output
+# Hello, World! I am process 0 of 32 on node master
+# Hello, World! I am process 1 of 32 on node master
+# Hello, World! I am process 2 of 32 on node master
+# Hello, World! I am process 3 of 32 on node master
+# Hello, World! I am process 4 of 32 on node node1
+# Hello, World! I am process 5 of 32 on node node1
+# Hello, World! I am process 6 of 32 on node node1
+# Hello, World! I am process 7 of 32 on node node1
+# Hello, World! I am process 8 of 32 on node node2
+# ...
+# Hello, World! I am process 28 of 32 on node node7
+# Hello, World! I am process 29 of 32 on node node7
+# Hello, World! I am process 30 of 32 on node node7
+# Hello, World! I am process 31 of 32 on node node7
+```
 
 ## Introduction of Dataset
 ## Algorithm of Mobility Simulation
