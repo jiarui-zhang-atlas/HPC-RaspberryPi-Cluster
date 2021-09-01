@@ -59,7 +59,30 @@ NetworkX is a Python package for the creation, manupulation, and study of the st
 * Shapely>=1.7
 
 ## Setup master node
-1. 
+1. Flash the 64GB microSD card with Raspberry Pi OS, 32 bit, then master node gets a clean RPi Linux OS
+2. Install python 3.7
+3. Install MPICH: 3.4.2
+```shell
+# --------------------- Install MPICH ----------------- #
+$ sudo apt-get update
+$ mkdir mpich3
+$ cd mpich3
+$ wget http://www.mpich.org/static/downloads/3.4.2/mpich-3.4.2.tar.gz
+$ tar xfz mpich-3.4.2.tar.gz
+$ mkdir buuild install
+$ cd build
+# --disable-fortran since we don't use fortran for programming
+$ /home/pi/mpich3/mpich-3.4.2/configure --disable-fortran --with-device=ch4:ofi -prefix=/home/pi/mpich3/install
+# takes a while...
+$ make
+$ make install
+$ export PATH=$PATH:/home/pi/mpich3/install/bin # or the path you installed
+$ sudo nano /home/pi/.profile
+# add your MPICH path to .profile
+$ export = PATH="$PATH:/home/pi/mpich3/install/bin"
+# test installation
+$ mpiexec -n 1 hostname
+```
 ## Setup the whole cluster
 ## Introduction of Dataset
 ## Algorithm of Mobility Simulation
