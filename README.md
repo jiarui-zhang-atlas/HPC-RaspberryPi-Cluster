@@ -10,7 +10,7 @@ A RaspberryPi supercomputer for HPC Simulation
 * [Introduction of dataset](#introduction-of-dataset)
 * [Algorithm of mobility simulation](#algorithm-of-mobility-simulation)
 * [Results](#results)
-* [Known limitations](#known-limitations)
+* [Summary](#summary)
 
 ## Introduction
 Parallel and distributed computing is an interesting topic, but building a High Performance Computing (HPC) supercomputer/cluster has often required the usage of expensive hardware and complex machine setups. Thanks to the Raspberry Pi's low costs, small physical size and powerful performance, It's easier and cheaper for users to explore the parallel computing even with industry standard and learn both software and hardware technologies. The main goal of this project is to build a 8-node distributed computing cluster system using the Raspberry Pi 4B single-board computers for some simple simulations. 
@@ -237,5 +237,18 @@ The Workflow of Mobility simulation is shown below.
    </div>
    
 ## Results
+1. After the distributed calculation of traffic load on each edge in the network, the travel time of the shortest route has been recalculated based on the current traffic load information provided by last step.
+   <div align = "center"> 
+      <img src="https://github.com/Atlaszjr-star/HPC-RaspberryPi-Cluster/blob/main/figures/heatmap.png" width="800px" height="350px" /> 
+   </div>
+2. The traffic load of all agents within one hour (08:00 - 09:00) and within the whole day (08:00-22:00) are calculated on both 4 processes of master node and 32 processes on the cluster. The comparison of running time is shown below:
+   <div align = "center"> 
+      <img src="https://github.com/Atlaszjr-star/HPC-RaspberryPi-Cluster/blob/main/figures/compare.png" width="800px" height="500px" /> 
+   </div>
+## Summary
+The aims of this project are:
 
-## Known Limitations
+-  Set up a Raspberry Pi supercomputer cluster with 8 nodes and 32 processes.
+-  Set up the work environment for parallel computing based on MPI standard in the cluster
+-  Explore the possibility of development of HPC applications in the cluster by running simple mobility simulations.
+
