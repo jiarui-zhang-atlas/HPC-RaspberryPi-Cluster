@@ -250,5 +250,5 @@ The aims of this project are:
 
 -  Set up a Raspberry Pi supercomputer cluster with 8 nodes and 32 processes.
 -  Set up the work environment for parallel computing based on MPI standard in the cluster
--  Explore the possibility of development of HPC applications in the cluster by running simple mobility simulations.
+-  Explore the possibility of HPC application development in the cluster by running simple mobility simulations.
 
