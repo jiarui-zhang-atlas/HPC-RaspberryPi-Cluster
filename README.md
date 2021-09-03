@@ -243,7 +243,7 @@ The Workflow of Mobility simulation is shown below.
    </div>
 2. The traffic load of all agents within one hour (08:00 - 09:00) and within the whole day (08:00-22:00) are calculated on both 4 processes of master node and 32 processes on the cluster. The comparison of running time is shown below:
    <div align = "center"> 
-      <img src="https://github.com/Atlaszjr-star/HPC-RaspberryPi-Cluster/blob/main/figures/compare.png" width="800px" height="500px" /> 
+      <img src="https://github.com/Atlaszjr-star/HPC-RaspberryPi-Cluster/blob/main/figures/compare.png" width="700px" height="400px" /> 
    </div>
 ## Summary
 The aims of this project are:
