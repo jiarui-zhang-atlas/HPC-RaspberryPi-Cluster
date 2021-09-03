@@ -227,6 +227,7 @@ $ mpirun --mca btl_tcp_if_include eth0 -np 32 -machinefile /home/pi/machinefile 
 For the simple mobility simulations, the dataset is taxi 237120 pickup-dropoff pairs from Manhattan, 2016-06-01, from 08:00-22:00.
    <div align = "center"> 
       <img src="https://github.com/Atlaszjr-star/HPC-RaspberryPi-Cluster/blob/main/figures/Datasets.png" width="600px" height="100px" /> 
+      <br>
       <img src="https://github.com/Atlaszjr-star/HPC-RaspberryPi-Cluster/blob/main/figures/Manhattan.png" width="380px" height="250px" />
    </div>
    
