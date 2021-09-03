@@ -224,7 +224,18 @@ $ mpirun --mca btl_tcp_if_include eth0 -np 32 -machinefile /home/pi/machinefile 
 7. Now a Raspberry Pi supercomputer with 8 nodes is done ;-)
 
 ## Introduction of Dataset
-For the simple mobility simulations, the dataset is taxi 237120 pickup-dropoff pairs from Manhattan, 2016-06-01, from 08:00-22:00,
+For the simple mobility simulations, the dataset is taxi 237120 pickup-dropoff pairs from Manhattan, 2016-06-01, from 08:00-22:00.
+   <div align = "center"> 
+      <img src="https://github.com/Atlaszjr-star/HPC-RaspberryPi-Cluster/blob/main/figures/Datasets.png" width="600px" height="100px" /> 
+      <img src="https://github.com/Atlaszjr-star/HPC-RaspberryPi-Cluster/blob/main/figures/Manhattan.png" width="380px" height="250px" />
+   </div>
+   
 ## Algorithm of Mobility Simulation
+The Workflow of Mobility simulation is shown below.
+   <div align = "center"> 
+      <img src="https://github.com/Atlaszjr-star/HPC-RaspberryPi-Cluster/blob/main/figures/Workflow.png" width="800px" height="450px" /> 
+   </div>
+   
 ## Results
+
 ## Known Limitations
