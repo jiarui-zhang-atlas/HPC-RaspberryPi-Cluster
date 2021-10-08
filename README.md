@@ -1,5 +1,5 @@
 # HPC-RaspberryPi-Cluster
-A RaspberryPi supercomputer for HPC Simulation 
+A RaspberryPi supercomputer for HPC simulation 
 ## Table of contents
 * [Introduction](#introduction)
 * [Background info](#background-info)
